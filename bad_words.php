@@ -1,15 +1,14 @@
 <?php
-$paragraph = $_GET["paragraph"];
+$paragraph = $_POST["paragraph"];
+$paragraph_length =strlen($paragraph);
 
-$word_to_censor = $_GET["word-to-censor"] ;
-
+$word_to_censor = $_POST["word-to-censor"] ;
 $word_length =strlen($word_to_censor);
 
 
 $censored_paragraph = str_replace($word_to_censor, "***", $paragraph   );
 
-
-$paragraph_length =strlen($censored_paragraph);
+$censored_paragraph_length =strlen($censored_paragraph);
 
 ?>
   
@@ -28,32 +27,30 @@ $paragraph_length =strlen($censored_paragraph);
     <title>Badwords</title>
   </head>
   <body>
-    <h1>CENSOR WORDS</h1>
+      <h1>CENSOR WORDS</h1>
     <form
-      method="GET"
+      method="POST"
       action="./bad_words.php"
     >
+     <label for="paragraph"></label>
+      <textarea
+        name="paragraph"
+        id="paragraph"
+        cols="30"
+        rows="10"
+        placeholder="scrivi qualcosa"
+      ><?=$censored_paragraph . " (" . $censored_paragraph_length . " caratteri)"?></textarea>
+
       <label for="word-to-censor"></label>
       <textarea
         name="word-to-censor"
         id="word-to-censor"
         cols="30"
         rows="10"
-        placeholder="inserisci le parole da censurare"
-      ><?=$word_to_censor . " (" . $word_length . ")" 
-      ?></textarea>
-      <button>censura</button>
+        placeholder="inserisci la parola da censurare"
+      ><?=$word_to_censor. " (" . $word_length . " caratteri)"?></textarea>
       <br>
-      <label for="censored-paragraph"></label>
-      <textarea
-        name="censored-paragraph"
-        id="censored-paragraph"
-        cols="30"
-        rows="10"
-        placeholder="paragrafo censurato"
-      ><?=$censored_paragraph . " (" . $paragraph_length . ")" ?>
-</textarea>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, reiciendis!</p>
-      
+      <button>censura</button>  
+      <p>il paragrafo riginale aveva <span><?=$paragraph_length." caratteri"?></span></p>
   </body>
 </html>

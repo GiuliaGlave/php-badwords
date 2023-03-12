@@ -15,29 +15,28 @@
   <body>
     <h1>CENSOR WORDS</h1>
     <form
-      method="GET"
+      method="POST"
       action="./bad_words.php"
     >
+     <label for="paragraph"></label>
+      <textarea
+        name="paragraph"
+        id="paragraph"
+        cols="30"
+        rows="10"
+        placeholder="scrivi qualcosa"
+      ></textarea>
+
       <label for="word-to-censor"></label>
       <textarea
         name="word-to-censor"
         id="word-to-censor"
         cols="30"
         rows="10"
-        placeholder="inserisci le parole da censurare"
+        placeholder="inserisci la parola da censurare"
       ></textarea>
-      <button>censura</button>
       <br>
-      <label for="paragraph"></label>
-      <textarea
-        name="paragraph"
-        id="paragraph"
-        cols="30"
-        rows="10"
-        placeholder="paragrafo censurato"
-      ></textarea>
-
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, reiciendis!</p>
+      <button>censura</button>  
       
   </body>
 </html>
